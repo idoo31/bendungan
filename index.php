@@ -762,7 +762,7 @@ $result_berita = $koneksi->query($sql);
                     <li><a href="profil.phpl" class="hover:text-[#0077b6]">Profil</a></li>
                     <li><a href="berita.php" class="hover:text-[#0077b6]">Berita & Kegiatan</a></li>
                     <li><a href="ppdb.phpl" class="hover:text-[#0077b6]">PPDB</a></li>
-                    <li><a href="#" class="hover:text-[#0077b6]">Kontak</a></li>
+                    <li><a href="kontak.php" class="hover:text-[#0077b6]">Kontak</a></li>
                 </ul>
             </div>
             <div>

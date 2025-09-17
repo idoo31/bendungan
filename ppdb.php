@@ -175,7 +175,7 @@
                         <li><a href="profil.php" class="hover:text-[#0077b6]">Profil</a></li>
                         <li><a href="berita.php" class="hover:text-[#0077b6]">Berita & Kegiatan</a></li>
                         <li><a href="ppdb.php" class="hover:text-[#0077b6]">PPDB</a></li>
-                        <li><a href="#footer" class="hover:text-[#0077b6]">Kontak</a></li>
+                        <li><a href="kontak.php" class="hover:text-[#0077b6]">Kontak</a></li>
                     </ul>
                 </div>
 

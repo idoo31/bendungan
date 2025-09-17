@@ -163,14 +163,13 @@ $tanggal_terbit_formatted = "$hari $bulan $tahun";
             <h3 class="font-bold text-[#023e8a] mb-3">Tautan Cepat</h3>
             <ul class="space-y-2 text-sm">
               <li>
-                <a href="profil.html" class="hover:text-[#0077b6]">Profil</a>
+                <a href="profil.php" class="hover:text-[#0077b6]">Profil</a>
               </li>
               <li>
                 <a href="berita.php" class="hover:text-[#0077b6]">Berita & Kegiatan</a>
               </li>
-              <li><a href="ppdb.html" class="hover:text-[#0077b6]">PPDB</a></li>
-              <li><a href="#" class="hover:text-[#0077b6]">Galeri</a></li>
-              <li><a href="#" class="hover:text-[#0077b6]">Kontak</a></li>
+              <li><a href="ppdb.php" class="hover:text-[#0077b6]">PPDB</a></li>
+              <li><a href="kontak.php" class="hover:text-[#0077b6]">Kontak</a></li>
             </ul>
           </div>
           <div>
