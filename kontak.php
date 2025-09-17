@@ -85,7 +85,7 @@
                 <a href="profil.php" class="hover:text-yellow-300">Profil</a>
                 <a href="berita.php" class="hover:text-yellow-300">Berita & Kegiatan</a>
                 <a href="ppdb.php" class="hover:text-yellow-300">PPDB</a>
-                <a href="#footer" class="text-yellow-300 border-b-2 border-yellow-300 pb-1">Kontak</a>
+                <a href="#" class="text-yellow-300 border-b-2 border-yellow-300 pb-1">Kontak</a>
             </div>
 
             <button id="mobile-menu-button" class="focus:outline-none md:hidden">
@@ -100,7 +100,7 @@
             <a href="profil.php" class="block py-2 border-b border-gray-600">Profil</a>
             <a href="berita.php" class="block py-2 border-b border-gray-600">Berita & Kegiatan</a>
             <a href="ppdb.php" class="block py-2 border-b border-gray-600">PPDB</a>
-            <a href="#footer" class="block py-2 text-yellow-300">Kontak</a>
+            <a href="#" class="block py-2 text-yellow-300">Kontak</a>
         </div>
     </nav>
 
