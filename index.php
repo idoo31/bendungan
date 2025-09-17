@@ -281,7 +281,7 @@ $result_berita = $koneksi->query($sql);
                 <a href="profil.php" class="hover:text-yellow-300">Profil</a>
                 <a href="berita.php" class="hover:text-yellow-300">Berita & Kegiatan</a>
                 <a href="ppdb.php" class="hover:text-yellow-300">PPDB</a>
-                <a href="#kontak.php" class="hover:text-yellow-300">Kontak</a>
+                <a href="kontak.php" class="hover:text-yellow-300">Kontak</a>
             </div>
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden focus:outline-none">
@@ -296,7 +296,7 @@ $result_berita = $koneksi->query($sql);
             <a href="profil.php" class="block py-2 border-b border-gray-600">Profil</a>
             <a href="berita.php" class="block py-2 border-b border-gray-600">Berita & Kegiatan</a>
             <a href="ppdb.php" class="block py-2 border-b border-gray-600">PPDB</a>
-            <a href="#kontak.php" class="block py-2">Kontak</a>
+            <a href="kontak.php" class="block py-2">Kontak</a>
         </div>
     </nav>
 
