@@ -1,4 +1,7 @@
 <?php
+// Tambahkan koneksi database di baris paling atas
+require_once 'koneksi.php';
+
 // Cek jika ada parameter 'status' di URL untuk menampilkan notifikasi
 if (isset($_GET['status'])) {
     if ($_GET['status'] == 'sukses') {
@@ -8,6 +11,7 @@ if (isset($_GET['status'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -24,8 +28,6 @@ if (isset($_GET['status'])) {
             font-family: "Poppins", sans-serif;
             background-color: #f6fbff;
         }
-
-        /* Hero Section Style */
         .kontak-hero-bg {
             background: linear-gradient(rgba(2, 62, 138, 0.85),
                     rgba(2, 62, 138, 0.85)),
@@ -37,60 +39,30 @@ if (isset($_GET['status'])) {
             align-items: center;
         }
 
-        @media (min-width: 640px) {
-            .kontak-hero-bg {
-                min-height: 180px;
-            }
-        }
+        @media (min-width: 640px) { .kontak-hero-bg { min-height: 180px; } }
+        @media (min-width: 1024px) { .kontak-hero-bg { min-height: 220px; } }
 
-        @media (min-width: 1024px) {
-            .kontak-hero-bg {
-                min-height: 220px;
-            }
-        }
-
-        /* Navbar Style */
         .navbar {
             transition: all 0.3s ease;
             background: rgba(0, 119, 182, 0.15);
             border-bottom: 1px solid rgba(0, 119, 182, 0.08);
             color: #fff;
         }
-
         .navbar-scrolled {
             background: #fff !important;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             border-bottom: 1px solid #e5e7eb;
             color: #222;
         }
-
-        .navbar-scrolled .container span {
-            color: #0077b6 !important;
-        }
-
+        .navbar-scrolled .container span { color: #0077b6 !important; }
         .navbar-scrolled .container a,
-        .navbar-scrolled .container svg {
-            color: #222 !important;
-            fill: #222 !important;
-        }
-
-        .navbar-scrolled .container a.text-yellow-300 {
-            color: #0077b6 !important;
-            border-color: #0077b6 !important;
-        }
-
-        .navbar-scrolled .container a:hover {
-            color: #0077b6 !important;
-        }
-
-        .navbar-scrolled .container .text-white {
-            color: #222 !important;
-        }
+        .navbar-scrolled .container svg { color: #222 !important; fill: #222 !important; }
+        .navbar-scrolled .container a.text-yellow-300 { color: #0077b6 !important; border-color: #0077b6 !important; }
+        .navbar-scrolled .container a:hover { color: #0077b6 !important; }
+        .navbar-scrolled .container .text-white { color: #222 !important; }
     </style>
 </head>
-
 <body class="bg-[#f6fbff]">
-
     <nav id="navbar" class="navbar fixed top-0 left-0 z-50 flex h-[80px] w-full items-center text-white">
         <div class="container mx-auto flex h-full items-center justify-between px-6">
             <div class="flex items-center space-x-3">
@@ -100,7 +72,6 @@ if (isset($_GET['status'])) {
                     <span class="block text-xs text-white">Sekolah Dasar Negeri Unggulan</span>
                 </div>
             </div>
-
             <div class="hidden space-x-8 text-base font-medium md:flex">
                 <a href="index.php" class="hover:text-yellow-300">Beranda</a>
                 <a href="profil.php" class="hover:text-yellow-300">Profil</a>
@@ -108,14 +79,12 @@ if (isset($_GET['status'])) {
                 <a href="ppdb.php" class="hover:text-yellow-300">PPDB</a>
                 <a href="kontak.php" class="text-yellow-300 border-b-2 border-yellow-300 pb-1">Kontak</a>
             </div>
-
             <button id="mobile-menu-button" class="focus:outline-none md:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
         </div>
-
         <div id="mobile-menu" class="absolute left-0 top-[80px] z-40 hidden w-full bg-[#223333] px-6 py-4 md:hidden">
             <a href="index.php" class="block py-2 border-b border-gray-600">Beranda</a>
             <a href="profil.php" class="block py-2 border-b border-gray-600">Profil</a>
@@ -144,7 +113,6 @@ if (isset($_GET['status'])) {
     <main class="py-16">
         <div class="container mx-auto max-w-6xl px-4 sm:px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-
                 <div>
                     <h2 class="text-2xl font-bold text-[#0077b6] mb-4">Informasi Kontak</h2>
                     <p class="text-gray-600 mb-8">
@@ -181,7 +149,6 @@ if (isset($_GET['status'])) {
                         </div>
                     </div>
                 </div>
-
                 <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
                     <h2 class="text-2xl font-bold text-[#0077b6] mb-6">Kirim Pertanyaan Anda</h2>
                     <form action="proses_kontak.php" method="POST" class="space-y-5">
@@ -215,11 +182,52 @@ if (isset($_GET['status'])) {
         <div class="container mx-auto max-w-6xl px-4 sm:px-6">
             <h2 class="text-2xl font-bold text-[#0077b6] text-center mb-8">Lokasi Kami</h2>
             <div class="overflow-hidden rounded-lg shadow-lg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.037380537443!2d106.8485253153495!3d-6.642131995195007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c894a4574c81%3A0x8543564033b9347!2sSDN%20Bendungan%201!5e0!3m2!1sen!2sid!4v1663333333333!5m2!1sen!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7644.338637153668!2d106.8544563278819!3d-6.66507695820366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c999b6e8ada1%3A0x1f0e291df25fa39b!2sSDN%20Bendungan%201!5e0!3m2!1sid!2sid!4v1758555798557!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
+
+    <section class="pb-16 bg-gray-50 pt-16">
+        <div class="container mx-auto max-w-4xl px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Tanya Jawab Publik</h2>
+            <div class="space-y-8">
+                <?php
+                $sql_tanyajawab = "SELECT nama_penanya, pertanyaan, jawaban, nama_penjawab, waktu_jawab FROM tanya_jawab WHERE status = 'published' ORDER BY id DESC LIMIT 5";
+                $result_tanyajawab = $koneksi->query($sql_tanyajawab);
+                if ($result_tanyajawab && $result_tanyajawab->num_rows > 0):
+                    while($row = $result_tanyajawab->fetch_assoc()):
+                ?>
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                             <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800"><?php echo htmlspecialchars($row['nama_penanya']); ?></p>
+                            <p class="text-gray-600 mt-1"><?php echo nl2br(htmlspecialchars($row['pertanyaan'])); ?></p>
+                        </div>
+                    </div>
+                    <hr class="my-4 border-gray-200">
+                    <div class="flex items-start space-x-4 ml-8">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                             <svg class="w-6 h-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-blue-700"><?php echo htmlspecialchars($row['nama_penjawab']); ?></p>
+                            <p class="text-sm text-gray-500"><?php echo date('d F Y \p\u\k\u\l H:i', strtotime($row['waktu_jawab'])); ?></p>
+                            <p class="text-gray-700 mt-2"><?php echo nl2br(htmlspecialchars($row['jawaban'])); ?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php endwhile; else: ?>
+                    <div class="text-center bg-white p-8 rounded-lg shadow-sm border">
+                        <p class="text-gray-500">Belum ada tanya jawab yang dipublikasikan.</p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+
     <footer id="footer" class="bg-[#e0f7fa] pt-8 sm:pt-10 pb-0 relative">
         <div class="container mx-auto px-4 sm:px-6 md:px-16">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 pb-6 sm:pb-8">
@@ -232,7 +240,6 @@ if (isset($_GET['status'])) {
                         Menjadi sekolah dasar unggulan yang berkarakter, berprestasi, dan berwawasan global.
                     </p>
                 </div>
-
                 <div>
                     <h3 class="font-bold text-[#023e8a] mb-3">Tautan Cepat</h3>
                     <ul class="space-y-2 text-sm">
@@ -242,7 +249,6 @@ if (isset($_GET['status'])) {
                         <li><a href="kontak.php" class="hover:text-[#0077b6]">Kontak</a></li>
                     </ul>
                 </div>
-
                 <div>
                     <h3 class="font-bold text-[#023e8a] mb-3">Hubungi Kami</h3>
                     <ul class="space-y-2 text-sm">
@@ -260,7 +266,6 @@ if (isset($_GET['status'])) {
                         </li>
                     </ul>
                 </div>
-
                 <div>
                     <h3 class="font-bold text-[#023e8a] mb-3">Follow Us</h3>
                     <div class="flex items-center gap-4 mt-2">
@@ -283,13 +288,11 @@ if (isset($_GET['status'])) {
         </div>
     </footer>
     <script>
-        // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
 
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         const headerSection = document.getElementById('header-section');
         const headerHeight = headerSection.offsetHeight;
@@ -302,6 +305,9 @@ if (isset($_GET['status'])) {
             }
         });
     </script>
-    </body>
-
+</body>
 </html>
+<?php
+// Tutup koneksi database di akhir file
+$koneksi->close();
+?>
