@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Eksekusi perintah dan alihkan halaman
     if ($stmt->execute()) {
-        header("Location: kontak.php?status=sukses");
+        header("Location: ../kontak.php?status=sukses");
     } else {
-        header("Location: kontak.php?status=gagal");
+        header("Location: ../kontak.php?status=gagal");
     }
 
     // Tutup statement dan koneksi

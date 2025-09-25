@@ -4,13 +4,13 @@ require_once 'koneksi.php';
 session_start();
 // Pastikan hanya admin yang login yang bisa mengakses
 if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
 $action = $_GET['action'] ?? '';
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-$redirect_url = "admin.php?page=pesan"; // URL default untuk redirect
+$redirect_url = "../admin.php?page=pesan"; // URL default untuk redirect
 
 if ($action === 'delete' && $id > 0) {
     // Gunakan prepared statement untuk menghapus pesan dari tabel 'kontak_masuk'

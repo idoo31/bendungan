@@ -26,18 +26,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['admin_username'] = $admin['username'];
             
             // Redirect ke halaman admin
-            header("Location: admin.php");
+            header("Location: ../admin.php");
             exit();
         }
     }
     
     // Jika username tidak ditemukan atau password salah, redirect kembali ke login dengan pesan error
-    header("Location: login.php?error=1");
+    header("Location: ../login.php?error=1");
     exit();
 
 } else {
     // Jika bukan metode POST, redirect ke halaman login
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 ?>

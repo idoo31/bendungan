@@ -30,7 +30,7 @@ if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
         }
         ?>
 
-        <form action="proses_login.php" method="POST">
+        <form action="app/proses_login.php" method="POST">
             <div class="mb-4">
                 <label for="username" class="block text-lg font-medium text-slate-700 mb-2">Username</label>
                 <input type="text" name="username" id="username" class="w-full text-lg px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>

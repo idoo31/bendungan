@@ -1,6 +1,6 @@
 <?php
 // Tambahkan koneksi database di baris paling atas
-require_once 'koneksi.php';
+require_once 'app/koneksi.php';
 
 // Cek jika ada parameter 'status' di URL untuk menampilkan notifikasi
 if (isset($_GET['status'])) {
@@ -62,6 +62,7 @@ if (isset($_GET['status'])) {
         .navbar-scrolled .container .text-white { color: #222 !important; }
     </style>
 </head>
+
 <body class="bg-[#f6fbff]">
     <nav id="navbar" class="navbar fixed top-0 left-0 z-50 flex h-[80px] w-full items-center text-white">
         <div class="container mx-auto flex h-full items-center justify-between px-6">
@@ -151,7 +152,7 @@ if (isset($_GET['status'])) {
                 </div>
                 <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
                     <h2 class="text-2xl font-bold text-[#0077b6] mb-6">Kirim Pertanyaan Anda</h2>
-                    <form action="proses_kontak.php" method="POST" class="space-y-5">
+                    <form action="app/proses_kontak.php" method="POST" class="space-y-5">
                         <div>
                             <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
                             <input type="text" name="kntk_nama" id="nama" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">

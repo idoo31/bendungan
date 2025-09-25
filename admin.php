@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once 'app/koneksi.php';
 
 session_start();
 // "Penjaga" halaman admin
@@ -157,7 +157,7 @@ if ($page === 'tanyajawab') {
                                             <td class="p-4 text-center space-x-3">
                                                 <a href="admin.php?page=artikel&action=edit&id=<?php echo $row['id']; ?>" class="font-semibold text-blue-600 hover:text-blue-800 transition-colors">Edit</a>
                                                 <span class="text-gray-300">|</span>
-                                                <a href="proses_artikel.php?action=delete&id=<?php echo $row['id']; ?>" class="font-semibold text-red-600 hover:text-red-800 transition-colors" onclick="return confirm('Anda yakin ingin menghapus artikel ini?');">Hapus</a>
+                                                <a href="app/proses_artikel.php?action=delete&id=<?php echo $row['id']; ?>" class="font-semibold text-red-600 hover:text-red-800 transition-colors" onclick="return confirm('Anda yakin ingin menghapus artikel ini?');">Hapus</a>
                                             </td>
                                         </tr>
                                         <?php endwhile; else: ?>
@@ -169,7 +169,7 @@ if ($page === 'tanyajawab') {
                         </div>
 
                     <?php elseif ($action === 'add' || ($action === 'edit' && isset($artikel_data))): ?>
-                        <form id="artikel-form" action="proses_artikel.php" method="POST" enctype="multipart/form-data">
+                        <form id="artikel-form" action="app/proses_artikel.php" method="POST" enctype="multipart/form-data">
                             <div class="flex items-center mb-6 pb-4 border-b border-gray-200">
                                 <a href="admin.php?page=artikel" title="Kembali" class="text-gray-500 hover:bg-gray-100 rounded-full p-2 mr-3">&larr;</a>
                                 <h2 class="text-2xl font-bold text-gray-800"><?php echo $action === 'edit' ? 'Edit Artikel' : 'Buat Artikel Baru'; ?></h2>
@@ -274,7 +274,7 @@ if ($page === 'tanyajawab') {
                                             <span class="text-gray-300">|</span>
                                             <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>" class="font-semibold text-blue-600 hover:text-blue-800">Balas</a>
                                             <span class="text-gray-300">|</span>
-                                            <a href="proses_pesan.php?action=delete&id=<?php echo $row['id']; ?>" class="font-semibold text-red-600 hover:text-red-800" onclick="return confirm('Anda yakin ingin menghapus pesan ini?');">Hapus</a>
+                                            <a href="app/proses_pesan.php?action=delete&id=<?php echo $row['id']; ?>" class="font-semibold text-red-600 hover:text-red-800" onclick="return confirm('Anda yakin ingin menghapus pesan ini?');">Hapus</a>
                                         </td>
                                     </tr>
                                     <?php endwhile; else: ?>
@@ -326,7 +326,7 @@ if ($page === 'tanyajawab') {
                             </div>
                         </div>
                     <?php elseif ($action === 'add' || ($action === 'edit' && isset($tanya_jawab_data))): ?>
-                        <form action="proses_tanyajawab.php" method="POST" class="bg-white p-8 rounded-xl shadow-sm border">
+                        <form action="app/proses_tanyajawab.php" method="POST" class="bg-white p-8 rounded-xl shadow-sm border">
                             <div class="flex items-center mb-6 pb-4 border-b">
                                 <a href="admin.php?page=tanyajawab" title="Kembali" class="text-gray-500 hover:bg-gray-100 rounded-full p-2 mr-3">&larr;</a>
                                 <h2 class="text-2xl font-bold text-gray-800"><?php echo $action === 'edit' ? 'Edit' : 'Jawab Pertanyaan'; ?> Publik</h2>

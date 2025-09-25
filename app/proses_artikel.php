@@ -4,7 +4,7 @@ require_once 'koneksi.php';
 session_start();
 // "Penjaga" halaman admin
 if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -78,7 +78,7 @@ switch ($action) {
             $stmt->bind_param("ssssssss", $judul, $slug, $isi_konten_aman, $_POST['penulis'], $_POST['status'], $url_gambar, $_POST['keterangan_gambar'], $waktu_terbit);
             
             if ($stmt->execute()) {
-                header("Location: admin.php?pesan=sukses_simpan");
+                header("Location: ../admin.php?pesan=sukses_simpan");
                 exit();
             } else {
                 die("Error: Gagal menyimpan data ke database. " . $stmt->error);
@@ -118,7 +118,7 @@ switch ($action) {
             $stmt->bind_param("ssssssssi", $judul, $slug, $isi_konten_aman, $_POST['penulis'], $_POST['status'], $url_gambar, $_POST['keterangan_gambar'], $waktu_terbit, $id);
 
             if ($stmt->execute()) {
-                header("Location: admin.php?pesan=sukses_update");
+                header("Location: ../admin.php?pesan=sukses_update");
                 exit();
             } else {
                 die("Error: Gagal memperbarui data. " . $stmt->error);
@@ -145,7 +145,7 @@ switch ($action) {
             $stmt = $koneksi->prepare("DELETE FROM artikel WHERE id = ?");
             $stmt->bind_param("i", $id);
             if ($stmt->execute()) {
-                header("Location: admin.php?pesan=sukses_hapus");
+                header("Location: ../admin.php?pesan=sukses_hapus");
                 exit();
             } else {
                 die("Error: Gagal menghapus data. " . $stmt->error);

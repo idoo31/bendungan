@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once 'app/koneksi.php';
 
 // Ambil 6 artikel terbaru yang statusnya 'diterbitkan'
 $sql = "SELECT judul, slug, penulis, waktu_terbit, LEFT(isi_konten, 200) as cuplikan, url_gambar, keterangan_gambar 
@@ -348,6 +348,7 @@ $result_berita = $koneksi->query($sql);
                 <div class="flex-1 flex justify-center items-center">
                     <div class="bg-white p-2 rounded-lg shadow-lg border-4 border-white">
                         <img src="asset/kepsek.png" alt="Kepala Sekolah" class="w-[260px] h-[320px] object-cover rounded-lg">
+                        <img src="" alt="">
                     </div>
                 </div>
             </div>

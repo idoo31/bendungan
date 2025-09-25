@@ -3,7 +3,7 @@ require_once 'koneksi.php';
 session_start();
 
 if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -33,6 +33,6 @@ if ($action === 'save') {
 }
 
 $koneksi->close();
-header("Location: admin.php?page=tanyajawab");
+header("Location: ../admin.php?page=tanyajawab");
 exit();
 ?>
