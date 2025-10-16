@@ -79,6 +79,13 @@
         @media (min-width: 1024px) {
             .profil-hero-bg { min-height: 220px; }
         }
+        /* Custom styles for text truncation */
+        .truncate-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 8; /* Controls how many lines to show */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="bg-[#f6fbff]">
@@ -123,8 +130,10 @@
     <div id="header-section" class="profil-hero-bg py-4">
         <div class="container mx-auto px-4 pl-0 sm:pl-16">
             <div class="max-w-xl bg-transparent p-0">
-                <h1 class="text-3xl font-bold text-yellow-300 mt-8 mb-2">Profil Sekolah</h1>
-                <p class="mt-2 text-white text-base">Mengenal lebih dekat SDN Bendungan 01</p>
+                <h1 class="text-3xl font-bold text-yellow-300 mt-8 mb-2 hidden md:block">Profil Sekolah</h1>
+                <p class="mt-2 text-white text-base hidden md:block">Mengenal lebih dekat SDN Bendungan 01</p>
+                <!-- Hanya tampilkan judul saja di mobile -->
+                <h1 class="text-2xl font-bold text-yellow-300 mt-8 mb-2 md:hidden text-center">Profil Sekolah</h1>
             </div>
         </div>
     </div>
@@ -143,21 +152,30 @@
     <!-- Sejarah Sekolah -->
     <div class="container mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12">
         <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-10">
-            <div class="w-full md:w-1/2 max-w-2xl mx-auto">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#0077b6] mb-3 sm:mb-4">Sejarah SDN Bendungan 01</h2>
-                <p class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base">
-                    Berdiri kokoh sejak tahun 1974, Sekolah Dasar Negeri (SDN) Bendungan 01 telah menjadi salah satu pilar pendidikan dasar di Desa Bendungan, Kecamatan Ciawi, Kabupaten Bogor. Dengan pengalaman panjang dalam dunia pendidikan, sekolah ini terus beradaptasi dengan perkembangan zaman, salah satunya dengan menerapkan Kurikulum Merdeka. Implementasi kurikulum ini bertujuan untuk memberikan pembelajaran yang lebih fleksibel dan berpusat pada minat serta bakat siswa, sejalan dengan visi pendidikan nasional.
-                </p>
-                <p class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base">
-                    Untuk mendukung tercapainya tujuan pembelajaran yang optimal, SDN Bendungan 01 Ciawi dilengkapi dengan berbagai fasilitas penunjang yang memadai. Sekolah ini memiliki ruang-ruang kelas yang nyaman, sebuah perpustakaan sebagai jantung pengetahuan, serta sarana sanitasi yang layak. Dengan lingkungan belajar yang kondusif dan didukung oleh tenaga pendidik yang berdedikasi, SDN Bendungan 01 Ciawi berkomitmen untuk mencetak generasi penerus bangsa yang cerdas, kreatif, dan berkarakter.
-                </p>
-                <div class="bg-[#e0f7fa] p-3 sm:p-4 rounded-lg border border-[#0077b6]">
-                    <p class="text-xs sm:text-sm italic text-[#0077b6]">
-                        "Pendidikan adalah bekal terbaik untuk perjalanan hidup." - Aristoteles
-                    </p>
+            <!-- Teks Sejarah - Mobile: di atas, Desktop: di kiri -->
+            <div class="w-full md:w-1/2 max-w-2xl mx-auto order-2 md:order-1">
+                <div class="px-4 md:px-0">
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#0077b6] mb-3 sm:mb-4">Sejarah SDN Bendungan 01</h2>
+                    <!-- Garis biru di bawah judul -->
+                    <div class="h-1 w-20 bg-[#0077b6] rounded-full mb-4 md:mb-6"></div>
+                    
+                    <div class="text-justify">
+                        <p class="text-gray-700 mb-3 sm:mb-4 text-xs sm:text-base md:text-base leading-relaxed">
+                            Berdiri kokoh sejak tahun 1974, Sekolah Dasar Negeri (SDN) Bendungan 01 telah menjadi salah satu pilar pendidikan dasar di Desa Bendungan, Kecamatan Ciawi, Kabupaten Bogor. Dengan pengalaman panjang dalam dunia pendidikan, sekolah ini terus beradaptasi dengan perkembangan zaman, salah satunya dengan menerapkan Kurikulum Merdeka. Implementasi kurikulum ini bertujuan untuk memberikan pembelajaran yang lebih fleksibel dan berpusat pada minat serta bakat siswa, sejalan dengan visi pendidikan nasional.
+                        </p>
+                        <p class="text-gray-700 mb-3 sm:mb-4 text-xs sm:text-base md:text-base leading-relaxed">
+                            Untuk mendukung tercapainya tujuan pembelajaran yang optimal, SDN Bendungan 01 Ciawi dilengkapi dengan berbagai fasilitas penunjang yang memadai. Sekolah ini memiliki ruang-ruang kelas yang nyaman, sebuah perpustakaan sebagai jantung pengetahuan, serta sarana sanitasi yang layak. Dengan lingkungan belajar yang kondusif dan didukung oleh tenaga pendidik yang berdedikasi, SDN Bendungan 01 Ciawi berkomitmen untuk mencetak generasi penerus bangsa yang cerdas, kreatif, dan berkarakter.
+                        </p>
+                    </div>
+                    <div class="bg-[#e0f7fa] p-3 sm:p-4 rounded-lg border border-[#0077b6] mt-4">
+                        <p class="text-xs sm:text-sm italic text-[#0077b6]">
+                            "Pendidikan adalah bekal terbaik untuk perjalanan hidup." - Aristoteles
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/2 flex justify-center">
+            <!-- Gambar - Mobile: di bawah, Desktop: di kanan -->
+            <div class="w-full md:w-1/2 flex justify-center order-1 md:order-2 px-4 md:px-0">
                 <img src="asset/sekolah.jpeg" 
                      alt="Sejarah SDN Bendungan 01" 
                      class="w-full max-w-md h-auto rounded-lg shadow-lg border border-[#e0f7fa] mx-auto">
@@ -171,7 +189,7 @@
             <h2 class="text-2xl md:text-3xl font-bold text-center text-[#0077b6] mb-8">Visi dan Misi Sekolah</h2>
             <div class="grid md:grid-cols-2 gap-10">
                 <!-- Visi -->
-                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] max-w-md mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] w-full md:max-w-none">
                     <div class="flex items-center mb-4">
                         <div class="bg-[#0077b6] p-2 rounded-full mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -181,14 +199,14 @@
                         </div>
                         <h3 class="text-xl font-bold text-[#0077b6]">Visi</h3>
                     </div>
-                    <ol class="list-disc pl-5 text-gray-700 space-y-2">
+                    <ol class="list-disc pl-5 text-gray-700 space-y-2 text-justify text-xs md:text-sm">
                         <li>Mewujudkan generasi cerdas, berkarakter, and berprestasi yang memiliki kepedulian terhadap lingkungan.</li>
                         <li>Menciptakan peserta didik yang unggul dalam ilmu pengetahuan dan teknologi dengan menjunjung tinggi nilai-nilai Pancasila dan cinta tanah air.</li>
                         <li>Menjadi sekolah berwawasan global yang mampu menghasilkan lulusan dengan kompetensi capaian dan integritas tinggi.</li>
                     </ol>
                 </div>
                 <!-- Misi -->
-                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] max-w-md mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] w-full md:max-w-none">
                     <div class="flex items-center mb-4">
                         <div class="bg-[#0077b6] p-2 rounded-full mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -197,7 +215,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-[#0077b6]">Misi</h3>
                     </div>
-                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2 text-justify text-xs md:text-sm">
                         <li>Meningkatkan kualitas pembelajaran melalui KOMUNITAS BELAJAR dalam melaksanakan Upgrading Kompetensi Guru dalam menciptakan metode yang inovatif serta pemanfaatan teknologi</li>
                         <li>Mengembangkan potensi peserta didik dalam bidang akademik maupun non-akademik melalui kegiatan intrakurikuler dan ekstrakurikuler.</li>
                         <li>Membentuk karakter disiplin, santun, dan berakhlak mulia melalui pembinaan dan teladan di lingkungan sekolah.</li>
@@ -210,85 +228,59 @@
         </div>
     </div>
 
-        <!-- Profil Guru -->
-    <div class="container mx-auto px-4 py-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-center text-[#0077b6] mb-8">Kenali Guru & Staf Kami</h2>
-        <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
-            Tim pendidik kami yang berdedikasi dan berpengalaman siap membimbing putra-putri Anda menjadi generasi penerus yang berprestasi dan berkarakter.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="bg-white p-6 rounded-lg shadow-primary text-center transition-transform transform hover:-translate-y-2">
-                <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#0077b6]">
-                    <img src="https://placehold.co/200x200/e0f7fa/0077b6" alt="Kepala Sekolah" class="w-full h-full object-cover">
-                </div>
-                <h3 class="font-bold text-xl text-[#0077b6]">Drs. Ahmad Supriyadi, M.Pd</h3>
-                <p class="text-[#023e8a] font-medium">Kepala Sekolah</p>
-                <p class="text-gray-500 text-sm mt-2 italic">"Pendidikan adalah kunci untuk membuka pintu emas kebebasan."</p>
-            </div>
+    <!-- Sambutan Kepala Sekolah (Menggantikan Profil Guru) -->
+    <div class="py-16 bg-[#e0f7fa]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row items-start gap-8 max-w-4xl mx-auto bg-white rounded-xl p-8 md:p-12 shadow-lg border border-[#b3e0f2]">
+                <!-- Konten Teks -->
+                <div class="flex-1 flex flex-col justify-center">
+                    <h2 class="text-base font-semibold text-black mb-1">Sambutan Kepala Sekolah</h2>
+                    <h3 class="text-2xl md:text-3xl font-bold text-[#0077b6] mb-4">Kiagus Dadan Ramdhan, S.Pd</h3>
 
-            <div class="bg-white p-6 rounded-lg shadow-primary text-center transition-transform transform hover:-translate-y-2">
-                <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#0077b6]">
-                    <img src="https://placehold.co/200x200/e0f7fa/0077b6" alt="Guru Kelas 6" class="w-full h-full object-cover">
-                </div>
-                <h3 class="font-bold text-xl text-[#0077b6]">Siti Rahayu, S.Pd</h3>
-                <p class="text-[#023e8a] font-medium">Wali Kelas VI</p>
-                <p class="text-gray-500 text-sm mt-2 italic">"Membentuk karakter dan menginspirasi mimpi setiap siswa."</p>
-            </div>
+                    <!-- Gambar mobile: muncul di bawah judul dan nama, di atas paragraf -->
+                    <div class="flex justify-center items-center md:hidden w-full my-4">
+                        <div class="bg-white p-2 rounded-lg shadow-lg border-4 border-white mx-auto">
+                            <img src="asset/kepsek.png" alt="Kepala Sekolah" class="w-56 h-auto rounded-lg object-cover mx-auto">
+                        </div>
+                    </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-primary text-center transition-transform transform hover:-translate-y-2">
-                <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#0077b6]">
-                    <img src="https://placehold.co/200x200/e0f7fa/0077b6" alt="Guru Olahraga" class="w-full h-full object-cover">
+                    <!-- Layout untuk Desktop: Gambar sejajar dengan paragraf 1 dan 2 -->
+                    <div class="md:flex md:items-start md:gap-6">
+                        <!-- Dua paragraf pertama + gambar di desktop -->
+                        <div class="md:flex-1">
+                            <div class="text-black text-sm md:text-base mb-6 text-justify">
+                                <p class="mb-4">
+                                    Selamat datang di SDN Bendungan 01. Kami percaya bahwa pendidikan adalah kunci masa depan anak-anak. Bersama, mari kita ciptakan lingkungan belajar yang menyenangkan dan penuh semangat untuk membangun generasi yang berkarakter dan berprestasi.
+                                </p>
+                                <p class="mb-4">
+                                    Di era yang penuh tantangan ini, kami berkomitmen untuk memberikan pendidikan yang tidak hanya fokus pada aspek akademik, tetapi juga pengembangan karakter, kreativitas, dan keterampilan sosial siswa. Kami percaya bahwa setiap anak memiliki potensi unik yang perlu dikembangkan secara optimal.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Gambar hanya di desktop, sejajar dengan dua paragraf pertama -->
+                        <div class="hidden md:flex md:flex-col md:items-center md:justify-start md:mt-0">
+                            <div class="bg-white p-2 rounded-lg shadow-lg border-4 border-white">
+                                <img src="asset/kepsek.png" alt="Kepala Sekolah" class="w-56 h-auto rounded-lg object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paragraf sisanya full width di bawah -->
+                    <div class="text-black text-sm md:text-base text-justify">
+                        <p class="mb-4">
+                            Kami mengimplementasikan kurikulum yang seimbang antara pengetahuan, keterampilan, dan nilai-nilai kehidupan. Dengan pendekatan pembelajaran yang berpusat pada siswa, kami berusaha menciptakan pengalaman belajar yang bermakna dan relevan dengan kehidupan sehari-hari.
+                        </p>
+                        <p class="mb-4">
+                            Kolaborasi antara sekolah, orang tua, dan masyarakat merupakan kunci keberhasilan pendidikan anak. Kami sangat menghargai partisipasi aktif orang tua dalam mendukung proses belajar anak di rumah dan di sekolah.
+                        </p>
+                        <p>
+                            Kami berharap melalui pendidikan yang holistik di SDN Bendungan 01, siswa-siswi dapat tumbuh menjadi pribadi yang berakhlak mulia, mandiri, kreatif, dan siap menghadapi tantangan masa depan dengan penuh percaya diri.
+                        </p>
+                    </div>
                 </div>
-                <h3 class="font-bold text-xl text-[#0077b6]">Budi Santoso, S.Pd</h3>
-                <p class="text-[#023e8a] font-medium">Guru Olahraga</p>
-                <p class="text-gray-500 text-sm mt-2 italic">"Membangun jiwa yang kuat dalam tubuh yang sehat."</p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Prestasi Sekolah -->
-    <div class="bg-[#e0f7fa] py-12">
-        <div class="container mx-auto px-6 md:px-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#0077b6] mb-8">Prestasi Sekolah</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Prestasi 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] max-w-md mx-auto">
-                    <div class="text-4xl font-bold text-[#0077b6] mb-2">1</div>
-                    <h3 class="text-lg font-bold text-[#0077b6] mb-2">Juara I Lomba Sains Nasional</h3>
-                    <p class="text-gray-700">Tahun 2023 - Tingkat Kota Bogor</p>
-                </div>
-                <!-- Prestasi 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] max-w-md mx-auto">
-                    <div class="text-4xl font-bold text-[#0077b6] mb-2">2</div>
-                    <h3 class="text-lg font-bold text-[#0077b6] mb-2">Sekolah Adiwiyata</h3>
-                    <p class="text-gray-700">Penghargaan Nasional Tahun 2022</p>
-                </div>
-                <!-- Prestasi 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] max-w-md mx-auto">
-                    <div class="text-4xl font-bold text-[#0077b6] mb-2">3</div>
-                    <h3 class="text-lg font-bold text-[#0077b6] mb-2">Juara Umum Olimpiade Matematika</h3>
-                    <p class="text-gray-700">Tahun 2023 - Tingkat Provinsi Jawa Barat</p>
-                </div>
-                <!-- Prestasi 4 -->
-                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] max-w-md mx-auto">
-                    <div class="text-4xl font-bold text-[#0077b6] mb-2">15</div>
-                    <h3 class="text-lg font-bold text-[#0077b6] mb-2">Juara Lomba Seni</h3>
-                    <p class="text-gray-700">Total kemenangan dalam 5 tahun terakhir</p>
-                </div>
-                <!-- Prestasi 5 -->
-                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] max-w-md mx-auto">
-                    <div class="text-4xl font-bold text-[#0077b6] mb-2">5</div>
-                    <h3 class="text-lg font-bold text-[#0077b6] mb-2">Sekolah Penggerak</h3>
-                    <p class="text-gray-700">Program Kemendikbud Tahun 2022</p>
-                </div>
-                <!-- Prestasi 6 -->
-                <div class="bg-white p-6 rounded-lg shadow-primary border border-[#e0f7fa] max-w-md mx-auto">
-                    <div class="text-4xl font-bold text-[#0077b6] mb-2">98%</div>
-                    <h3 class="text-lg font-bold text-[#0077b6] mb-2">Kelulusan</h3>
-                    <p class="text-gray-700">Rata-rata tingkat kelulusan 5 tahun terakhir</p>
-                </div>
+                
+                <!-- (mobile image moved up above; desktop image remains in-place) -->
             </div>
         </div>
     </div>

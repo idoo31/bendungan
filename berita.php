@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once 'app/koneksi.php';
 
 // Ambil semua artikel yang statusnya 'diterbitkan', urutkan dari yang terbaru
 $sql = "SELECT judul, slug, penulis, waktu_terbit, LEFT(isi_konten, 200) as cuplikan, url_gambar, keterangan_gambar 

@@ -1,5 +1,5 @@
 <?php
-require_once '<app>koneksi.php';
+require_once 'app/koneksi.php';
 
 // 1. Ambil 'slug' dari URL
 if (!isset($_GET['slug'])) {
