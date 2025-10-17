@@ -108,11 +108,7 @@ function formatWaktu($waktu) {
                 overflow-x: auto;
                 padding-bottom: 1rem;
             }
-            .seragam-wrapper {
-                display: flex;
-                width: max-content;
-                gap: 1rem;
-            }
+            /* Hapus display flex pada .seragam-wrapper agar grid Tailwind bekerja di mobile */
         }
     </style>
 </head>
@@ -156,20 +152,21 @@ function formatWaktu($waktu) {
     <!-- Hero Section -->
     <div class="hero-background pt-24 pb-12 md:pt-0 md:pb-0">
         <div class="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between w-full gap-8">
-            <div class="md:flex-1 max-w-xl text-center md:text-left">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white ml-12 mb-4 leading-tight">
+            <div class="md:flex-1 max-w-xl text-left md:text-left">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white ml-0 md:ml-12 mb-4 leading-tight">
                     Berprestasi, Semangat,<br>Aktif, Taat, Unggul.
                 </h1>
-                <p class="text-base sm:text-lg text-white ml-12 mb-6">
+                <p class="text-base sm:text-lg text-white ml-0 md:ml-12 mb-6 text-left md:text-left">
                     SDN Bendungan 01 Mewujudkan Lulusan Unggul Berkarakter dan Berprestasi dalam Persaingan Global.
                 </p>
                 <div class="flex justify-center md:justify-start">
-                    <a href="profil.php" class="bg-yellow-300 text-[#0077b6] font-semibold px-6 py-3 ml-12 rounded-lg shadow hover:bg-yellow-400 transition text-base w-full sm:w-auto">
+                    <a href="profil.php" class="bg-yellow-300 text-[#0077b6] font-semibold px-6 py-3 ml-0 md:ml-12 rounded-lg shadow hover:bg-yellow-400 transition text-base w-full sm:w-auto">
                         Profil Sekolah
                     </a>
                 </div>
             </div>
-            <div class="md:flex-1 flex justify-center md:justify-end items-center">
+            <!-- Gambar hanya ditampilkan di desktop -->
+            <div class="hidden md:flex md:flex-1 justify-center md:justify-end items-center">
                 <div class="relative w-full mr-8 max-w-sm md:max-w-md">
                     <img src="asset/belajar.png"
                         alt="Siswa SDN Bendungan 01"
@@ -182,12 +179,31 @@ function formatWaktu($waktu) {
 
     <!-- Sambutan Kepsek Section (Diperpanjang) -->
     <div class="py-16 bg-[#e0f7fa]">
+        <style>
+            /* Mobile-only: make sambutan side-by-side like desktop but scaled down */
+            @media (max-width: 639px) {
+                .sambutan-mobile-row { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; }
+                .sambutan-mobile-row .text-col { width: 65%; }
+                .sambutan-mobile-row .img-col { width: 35%; display: flex; justify-content: center; }
+                .sambutan-mobile-row .text-col h2 { font-size: 0.9rem; }
+                .sambutan-mobile-row .text-col h3 { font-size: 1.4rem; }
+                .sambutan-mobile-row .text-col .truncate-text { font-size: 0.9rem; }
+                .sambutan-mobile-row .img-col { align-items: center; justify-content: center; display: flex; }
+                .sambutan-mobile-row .img-col img { width: 200px; height: auto; display: block; margin-left: auto; margin-right: auto; }
+            }
+        </style>
         <div class="container mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto bg-white rounded-xl p-8 md:p-12 shadow-lg border border-[#b3e0f2] min-h-[500px]">
-                <div class="flex-1 flex flex-col justify-center text-center md:text-left">
+            <div class="flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto bg-white rounded-xl p-8 md:p-12 shadow-lg border border-[#b3e0f2] min-h-[500px] sambutan-mobile-row">
+                <div class="flex-1 flex flex-col justify-center text-center md:text-left text-col">
                     <h2 class="text-base font-semibold text-black mb-1">Sambutan Kepala Sekolah</h2>
-                    <h3 class="text-2xl md:text-3xl font-bold text-[#0077b6] mb-4">Kiagus Dadan Ramdhan, S.Pd</h3>
-                    <div class="text-black text-sm md:text-base mb-6 truncate-text">
+                    <h3 class="text-2xl md:text-3xl font-bold text-[#0077b6] mb-2">Kiagus Dadan Ramdhan, S.Pd</h3>
+                    <!-- Foto di tengah pada mobile, di samping pada desktop -->
+                    <div class="block md:hidden my-4">
+                        <div class="bg-white p-2 rounded-lg shadow-lg border-4 border-white w-fit mx-auto">
+                            <img src="asset/kepsek.png" alt="Kepala Sekolah" style="width:200px;max-width:80vw;" class="h-auto rounded-lg object-cover mx-auto">
+                        </div>
+                    </div>
+                    <div class="text-black text-sm md:text-base mb-6 truncate-text text-justify">
                         <p class="mb-4">Selamat datang di SDN Bendungan 01. Kami percaya bahwa pendidikan adalah kunci masa depan anak-anak. Bersama, mari kita ciptakan lingkungan belajar yang menyenangkan dan penuh semangat untuk membangun generasi yang berkarakter dan berprestasi.</p>
                         
                         <p class="mb-4">Di era yang penuh tantangan ini, kami berkomitmen untuk memberikan pendidikan yang tidak hanya fokus pada aspek akademik, tetapi juga pengembangan karakter, kreativitas, dan keterampilan sosial siswa. Kami percaya bahwa setiap anak memiliki potensi unik yang perlu dikembangkan secara optimal.</p>
@@ -202,7 +218,8 @@ function formatWaktu($waktu) {
                         Baca Sambutan Lengkap &rarr;
                     </a>
                 </div>
-                <div class="flex justify-center items-center order-first md:order-last">
+                <!-- Gambar hanya untuk desktop (md+) -->
+                <div class="hidden md:flex justify-center items-center md:order-last">
                     <div class="bg-white p-2 rounded-lg shadow-lg border-4 border-white">
                         <img src="asset/kepsek.png" alt="Kepala Sekolah" class="w-48 h-auto md:w-72 rounded-lg object-cover">
                     </div>
@@ -211,13 +228,14 @@ function formatWaktu($waktu) {
         </div>
     </div>
 
-    <div class="bg-white py-12 sm:py-20">
+    <!-- Section Keunggulan -->
+    <div class="bg-white py-12 sm:py-20 mb-8">
         <div class="container mx-auto px-4 sm:px-6">
             <h2 class="text-2xl sm:text-3xl font-bold text-center mb-3 text-[#0077b6]">Keunggulan SDN Bendungan 01</h2>
             <div class="mb-8 h-[2px] w-[80px] sm:w-[100px] mx-auto bg-gradient-to-r from-transparent via-[#0077b6] to-transparent"></div>
             <div class="pt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="flex flex-col items-center text-center px-4">
-                    <div class="bg-[#e0f7fa] rounded-xl flex items-center justify-center mb-6 w-16 h-16">
+                    <div class="bg-yellow-300 rounded-xl flex items-center justify-center mb-6 w-16 h-16">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#0077b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
@@ -228,7 +246,7 @@ function formatWaktu($waktu) {
                     </p>
                 </div>
                 <div class="flex flex-col items-center text-center px-4">
-                    <div class="bg-[#e0f7fa] rounded-xl flex items-center justify-center mb-6 w-16 h-16">
+                    <div class="bg-yellow-300 rounded-xl flex items-center justify-center mb-6 w-16 h-16">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#0077b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
@@ -239,7 +257,7 @@ function formatWaktu($waktu) {
                     </p>
                 </div>
                 <div class="flex flex-col items-center text-center px-4">
-                    <div class="bg-[#e0f7fa] rounded-xl flex items-center justify-center mb-6 w-16 h-16">
+                    <div class="bg-yellow-300 rounded-xl flex items-center justify-center mb-6 w-16 h-16">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#0077b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
@@ -253,8 +271,9 @@ function formatWaktu($waktu) {
         </div>
     </div>
 
+    <!-- Section Jadwal Seragam Sekolah -->
     <div class="bg-[#e0f7fa] py-12">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
             <div class="text-center mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-[#0077b6] mb-4">Jadwal Seragam Sekolah</h2>
                 <div class="mb-4 h-[2px] w-[80px] sm:w-[100px] mx-auto bg-gradient-to-r from-transparent via-[#0077b6] to-transparent"></div>
@@ -263,36 +282,36 @@ function formatWaktu($waktu) {
                 </p>
             </div>
             <div class="seragam-container">
-                <div class="seragam-wrapper flex justify-start md:justify-center flex-nowrap md:flex-wrap gap-4 md:gap-8 px-4 md:px-0">
-                    <div class="flex-shrink-0 flex flex-col items-center w-36">
+                <div class="seragam-wrapper grid grid-cols-2 gap-4 px-4 justify-items-center md:flex md:justify-center md:flex-wrap md:gap-8 md:px-0">
+                    <div class="flex flex-col items-center w-full md:w-36 col-span-2 mx-auto md:col-span-1 md:mx-0">
                         <div class="w-28 h-28 sm:w-32 sm:h-32 border-4 border-yellow-300 rounded-full overflow-hidden bg-white mb-3">
                             <img src="asset/putihmerah.jpg" alt="Seragam Senin" class="object-cover w-full h-full" />
                         </div>
                         <div class="font-bold text-[#0077b6] text-lg mb-1">Senin</div>
                         <div class="text-sm text-black text-center">Merah Putih<br>Lengkap</div>
                     </div>
-                    <div class="flex-shrink-0 flex flex-col items-center w-36">
+                    <div class="flex flex-col items-center w-full md:w-36">
                         <div class="w-28 h-28 sm:w-32 sm:h-32 border-4 border-yellow-300 rounded-full overflow-hidden bg-white mb-3">
                             <img src="asset/batik.jpg" alt="Seragam Selasa" class="object-cover w-full h-full" />
                         </div>
                         <div class="font-bold text-[#0077b6] text-lg mb-1">Selasa</div>
                         <div class="text-sm text-black text-center">Batik Sekolah</div>
                     </div>
-                    <div class="flex-shrink-0 flex flex-col items-center w-36">
+                    <div class="flex flex-col items-center w-full md:w-36">
                         <div class="w-28 h-28 sm:w-32 sm:h-32 border-4 border-yellow-300 rounded-full overflow-hidden bg-white mb-3">
                             <img src="asset/pramuka.jpg" alt="Seragam Rabu" class="object-cover w-full h-full" />
                         </div>
                         <div class="font-bold text-[#0077b6] text-lg mb-1">Rabu</div>
                         <div class="text-sm text-black text-center">Pramuka Lengkap</div>
                     </div>
-                    <div class="flex-shrink-0 flex flex-col items-center w-36">
+                    <div class="flex flex-col items-center w-full md:w-36">
                         <div class="w-28 h-28 sm:w-32 sm:h-32 border-4 border-yellow-300 rounded-full overflow-hidden bg-white mb-3">
                             <img src="asset/bajubudaya.jpg" alt="Seragam Kamis" class="object-cover w-full h-full" />
                         </div>
                         <div class="font-bold text-[#0077b6] text-lg mb-1">Kamis</div>
                         <div class="text-sm text-black text-center">Batik Sekolah</div>
                     </div>
-                    <div class="flex-shrink-0 flex flex-col items-center w-36">
+                    <div class="flex flex-col items-center w-full md:w-36">
                         <div class="w-28 h-28 sm:w-32 sm:h-32 border-4 border-yellow-300 rounded-full overflow-hidden bg-white mb-3">
                             <img src="asset/putihhitam.jpg" alt="Seragam Jumat" class="object-cover w-full h-full" />
                         </div>
@@ -388,35 +407,35 @@ function formatWaktu($waktu) {
     <div class="bg-white py-12 sm:py-20">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-4" data-statistik>
-                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 text-center">
+                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 md:p-6 md:min-h-[160px] text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                     <div id="stat-siswa" class="text-2xl font-bold text-white" data-count="386">0</div>
                     <div class="text-xs text-white font-medium">Siswa Aktif</div>
                 </div>
-                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 text-center">
+                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 md:p-6 md:min-h-[160px] text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                     <div id="stat-guru" class="text-2xl font-bold text-white" data-count="22">0</div>
                     <div class="text-xs text-white font-medium">Guru</div>
                 </div>
-                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 text-center">
+                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 md:p-6 md:min-h-[160px] text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                     <div id="stat-tendik" class="text-2xl font-bold text-white" data-count="5">0</div>
                     <div class="text-xs text-white font-medium">Tenaga Pendidik</div>
                 </div>
-                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 text-center">
+                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 md:p-6 md:min-h-[160px] text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <div id="stat-kelas" class="text-2xl font-bold text-white" data-count="12">0</div>
                     <div class="text-xs text-white font-medium">Kelas</div>
                 </div>
-                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 text-center col-span-2 sm:col-span-1">
+                <div class="bg-[#0077b6] rounded-xl shadow flex flex-col items-center justify-center p-4 md:p-6 md:min-h-[160px] text-center col-span-2 sm:col-span-1">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path d="M12 14l9-5-9-5-9 5 9 5z" />
                         <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
@@ -438,45 +457,45 @@ function formatWaktu($waktu) {
                     Fasilitas modern untuk mendukung proses belajar mengajar dan pengembangan bakat siswa.
                 </p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                 <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Perpustakaan" class="w-full h-28 object-cover">
-                    <div class="p-3">
+                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Perpustakaan" class="w-full h-28 md:h-36 lg:h-40 object-cover">
+                    <div class="p-3 md:p-4">
                         <h3 class="text-sm font-bold text-[#0077b6] mb-1">Perpustakaan</h3>
                         <p class="text-xs text-gray-600">Koleksi 5.000+ buku.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lapangan Indoor" class="w-full h-28 object-cover">
-                    <div class="p-3">
+                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lapangan Indoor" class="w-full h-28 md:h-36 lg:h-40 object-cover">
+                    <div class="p-3 md:p-4">
                         <h3 class="text-sm font-bold text-[#0077b6] mb-1">Lapangan Indoor</h3>
                         <p class="text-xs text-gray-600">Untuk kegiatan olahraga.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-                    <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lapangan Outdoor" class="w-full h-28 object-cover">
-                    <div class="p-3">
+                    <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lapangan Outdoor" class="w-full h-28 md:h-36 lg:h-40 object-cover">
+                    <div class="p-3 md:p-4">
                         <h3 class="text-sm font-bold text-[#0077b6] mb-1">Lapangan Outdoor</h3>
                         <p class="text-xs text-gray-600">Untuk upacara & atletik.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lab Komputer" class="w-full h-28 object-cover">
-                    <div class="p-3">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lab Komputer" class="w-full h-28 md:h-36 lg:h-40 object-cover">
+                    <div class="p-3 md:p-4">
                         <h3 class="text-sm font-bold text-[#0077b6] mb-1">Lab Komputer</h3>
                         <p class="text-xs text-gray-600">Pembelajaran TI.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-                    <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ruang Seni" class="w-full h-28 object-cover">
-                    <div class="p-3">
+                    <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ruang Seni" class="w-full h-28 md:h-36 lg:h-40 object-cover">
+                    <div class="p-3 md:p-4">
                         <h3 class="text-sm font-bold text-[#0077b6] mb-1">Ruang Seni</h3>
                         <p class="text-xs text-gray-600">Alat musik tradisional.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-                    <img src="https://i.pinimg.com/736x/99/f6/c5/99f6c533388f9c49fe857f13dd25f822.jpg" alt="Musholla" class="w-full h-28 object-cover">
-                    <div class="p-3">
+                    <img src="https://i.pinimg.com/736x/99/f6/c5/99f6c533388f9c49fe857f13dd25f822.jpg" alt="Musholla" class="w-full h-28 md:h-36 lg:h-40 object-cover">
+                    <div class="p-3 md:p-4">
                         <h3 class="text-sm font-bold text-[#0077b6] mb-1">Musholla</h3>
                         <p class="text-xs text-gray-600">Tempat ibadah nyaman.</p>
                     </div>
@@ -582,7 +601,7 @@ function formatWaktu($waktu) {
                     <ul class="space-y-2 text-sm">
                         <li class="flex items-start gap-2">
                             <svg class="w-5 h-5 text-[#0077b6] mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2A18 18 0 013 5z"></path>
+                                <path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2A18 18 0 013 5a2 2 0 012-2h2.09a2 2 0 012 1.72c.13.81.42 1.6.87 2.29a2 2 0 01-.45 2.11l-.94.94a16 16 0 006.29 6.29l.94-.94a2 2 0 012.11-.45c.69.45 1.48.74 2.29.87A2 2 0 0122 16.92z" />
                             </svg>
                             (0251) - 8324567
                         </li>

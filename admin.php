@@ -316,6 +316,7 @@ if ($page === 'tanyajawab') {
                                             <td class="p-4"><span class="px-2.5 py-1 text-xs font-semibold rounded-full <?php echo $row['status'] === 'published' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'; ?>"><?php echo ucfirst($row['status']); ?></span></td>
                                             <td class="p-4 text-center space-x-3">
                                                 <a href="admin.php?page=tanyajawab&action=edit&id=<?php echo $row['id']; ?>" class="font-semibold text-blue-600 hover:text-blue-800">Edit</a>
+                                                <a href="app/proses_tanyajawab.php?action=delete&id=<?php echo $row['id']; ?>" class="font-semibold text-red-600 hover:text-red-800" onclick="return confirm('Anda yakin ingin menghapus tanya jawab ini?');">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php endwhile; else: ?>

@@ -97,8 +97,10 @@ if (isset($_GET['status'])) {
     <div id="header-section" class="kontak-hero-bg py-4">
         <div class="container mx-auto px-4 pl-0 sm:pl-16">
             <div class="max-w-xl bg-transparent p-0">
-                <h1 class="text-3xl font-bold text-yellow-300 mt-8 mb-2">Hubungi Kami</h1>
-                <p class="mt-2 text-white text-base">Kami siap membantu menjawab setiap pertanyaan Anda.</p>
+                <h1 class="text-3xl font-bold text-yellow-300 mt-8 mb-2 hidden md:block">Hubungi Kami</h1>
+                <p class="mt-2 text-white text-base hidden md:block">Kami siap membantu menjawab setiap pertanyaan Anda.</p>
+                <!-- Mobile only: judul saja, center -->
+                <h1 class="text-2xl font-bold text-yellow-300 mt-8 mb-2 md:hidden text-center">Hubungi Kami</h1>
             </div>
         </div>
     </div>

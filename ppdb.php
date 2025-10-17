@@ -126,12 +126,14 @@
     <div id="hero-measurer" class="ppdb-hero-bg">
         <div class="container mx-auto px-4 pl-0 sm:pl-16">
             <div class="max-w-xl bg-transparent p-0">
-                <h1 class="mb-2 mt-8 text-3xl font-bold text-yellow-300">
+                <h1 class="mb-2 mt-8 text-3xl font-bold text-yellow-300 hidden md:block">
                     PPDB SDN Bendungan 01
                 </h1>
-                <p class="mt-2 text-base text-white">
+                <p class="mt-2 text-base text-white hidden md:block">
                     Informasi Penerimaan Peserta Didik Baru Tahun 2026
                 </p>
+                <!-- Mobile only: judul saja, center -->
+                <h1 class="text-2xl font-bold text-yellow-300 mt-8 mb-2 md:hidden text-center">PPDB SDN Bendungan 01</h1>
             </div>
         </div>
     </div>

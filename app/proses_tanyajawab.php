@@ -7,7 +7,8 @@ if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
     exit;
 }
 
-$action = $_POST['action'] ?? '';
+
+$action = $_POST['action'] ?? ($_GET['action'] ?? '');
 
 if ($action === 'save') {
     $nama_penanya = $_POST['nama_penanya'];
@@ -28,6 +29,13 @@ if ($action === 'save') {
 
     $stmt = $koneksi->prepare("UPDATE tanya_jawab SET nama_penanya = ?, pertanyaan = ?, jawaban = ?, status = ?, waktu_jawab = NOW() WHERE id = ?");
     $stmt->bind_param("ssssi", $nama_penanya, $pertanyaan, $jawaban, $status, $id);
+    $stmt->execute();
+    $stmt->close();
+}
+elseif ($action === 'delete' && isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+    $stmt = $koneksi->prepare("DELETE FROM tanya_jawab WHERE id = ?");
+    $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->close();
 }

@@ -133,8 +133,10 @@ $result = $koneksi->query($sql);
     <div id="header-section" class="profil-hero-bg py-4">
         <div class="container mx-auto px-4 pl-0 sm:pl-16">
             <div class="max-w-xl bg-transparent p-0">
-                <h1 class="text-3xl font-bold text-yellow-300 mt-8 mb-2">Berita & Informasi Kegiatan</h1>
-                <p class="mt-2 text-white text-base">Ikuti terus informasi terbaru dari SDN Bendungan 01.</p>
+                <h1 class="text-3xl font-bold text-yellow-300 mt-8 mb-2 hidden md:block">Berita & Informasi Kegiatan</h1>
+                <p class="mt-2 text-white text-base hidden md:block">Ikuti terus informasi terbaru dari SDN Bendungan 01.</p>
+                <!-- Mobile only: judul saja, center -->
+                <h1 class="text-2xl font-bold text-yellow-300 mt-8 mb-2 md:hidden text-center">Berita & Informasi Kegiatan</h1>
             </div>
         </div>
     </div>
@@ -154,7 +156,7 @@ $result = $koneksi->query($sql);
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php if ($result && $result->num_rows > 0): ?>
                     <?php while($artikel = $result->fetch_assoc()): ?>
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col max-w-xs mx-auto md:max-w-none md:mx-0">
                             <a href="artikel.php?slug=<?php echo htmlspecialchars($artikel['slug']); ?>" class="block">
                                 <img src="<?php echo htmlspecialchars($artikel['url_gambar']); ?>" alt="<?php echo htmlspecialchars($artikel['keterangan_gambar']); ?>" class="w-full h-48 object-cover">
                             </a>
@@ -167,9 +169,9 @@ $result = $koneksi->query($sql);
                                 <p class="text-gray-500 text-xs mb-3">
                                     Oleh <strong><?php echo htmlspecialchars($artikel['penulis']); ?></strong> &bull; <?php echo date('d F Y', strtotime($artikel['waktu_terbit'])); ?>
                                 </p>
-                                <p class="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-3">
-                                   <?php echo strip_tags($artikel['cuplikan']); ?>...
-                                </p>
+                                          <p class="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-3 hidden md:block">
+                                              <?php echo strip_tags($artikel['cuplikan']); ?>...
+                                          </p>
                                 <div class="mt-auto">
                                     <a href="artikel.php?slug=<?php echo htmlspecialchars($artikel['slug']); ?>" class="text-sm font-medium text-blue-600 hover:text-blue-800">
                                         Baca Selengkapnya &rarr;
